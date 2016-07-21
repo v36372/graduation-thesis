@@ -35,17 +35,17 @@ This folder contains reference documents that this project used.
 ## How to get this project up and running?
 
 
-  # Open up command line at the root folder.
+1. Open up command line at the root folder.
 
-  # Navigate to `MARKSTREAM/SETUP/SERVER` with: `cd MARKSTREAM/SETUP/SERVER`
+2. Navigate to `MARKSTREAM/SETUP/SERVER` with: `cd MARKSTREAM/SETUP/SERVER`
 
-  # Start up the server with an audio file as input: `./MarkStream RWC_002.wav`
+3. Start up the server with an audio file as input: `./MarkStream RWC_002.wav`
 
-  # Open another command line window.
+4. Open another command line window.
 
-  # Navigate to `MARKSTREAM/SETUP/CLIENT` with `cd MARKSTREAM/SETUP/CLIENT`
+5. Navigate to `MARKSTREAM/SETUP/CLIENT` with `cd MARKSTREAM/SETUP/CLIENT`
 
-  # Start up the client: `./http-server`
+6. Start up the client: `./http-server`
 
-  # Open the internet browser and go to the client application at `0.0.0.0:8080`
+7. Open the internet browser and go to the client application at `0.0.0.0:8080`
   
