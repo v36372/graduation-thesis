@@ -1,0 +1,14 @@
+# The chart type , option : spline/line/bar/column/area
+ChartType = column
+Title = Monthly Online Radio Listening
+SubTitle = 
+ValueSuffix = %
+
+# The x Axis numbers. The count this numbers MUST be the same with the data series
+XAxisNumbers = 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016
+
+# The y Axis text
+YAxisText = %
+
+# The data and the name of the lines
+Data| Monthly listeners = 5.0, 7, 12, 17, 16, 15, 21, 20, 21, 27, 27, 34, 39, 45, 47, 53, 57

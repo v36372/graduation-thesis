@@ -1,0 +1,33 @@
+\chapter{Conclusion}
+\section{Summary}
+Digital audio processing is a very large field that has a lot of application in the real world. After taking research in this area, we see the potential of its smaller branch: Audio data hiding, whose value not only about securing data but also enriching user experience in audio experiencing. In addition with the fact that our current method of audio advertising is poor in performance and lack user interaction, we aim to create a new advertising methodology combining audio watermarking and Internet radio broadcasting. While traditional audio advertisting focus only on the audio content to attract customers, we propose an extra gate of information for user to learn more about our advertisements. 
+
+The result of our engineering project is a stable, standalone system that take audio data as input. In reality, our input may comes from an actual radio broadcasting station. We then employ the technique of audio data hiding to embedd extra advertising information to the audio data itself, producing a stream of watermarked audio data and stream to clients. On the other hand, the client application receive audio data, extract watermark and display to users, assisting them connect to our advertisments. 
+
+We also conduct several experiments to validate our proposed methods in audio data hiding and an audio streaming system. The outcome of our experiments shown potential in applying a new method of advertising in Internet radio broadcasting.
+
+\section{Contribution}
+In this thesis project, we had contributed to Internet radio broadcasting and software engineering field the following points:
+\begin{itemize}
+\item{} We created a audio streaming system with audio data hiding integrated. This help validate the idea of enhancing user experience with augmented audio content. From that vantage point, there would be more doors to be opened in this Interet radio broadcasting industry. Moreover, this project can be a ground stone for future projects that are based on the idea of a audio streaming service combines with audio watermarking.
+\item{} By employ the audio data hiding method of dynamic phase coding, we validate it again with convincing experiment results. Plus, we illustrate a correct implementation of this algorithm for future project to reference to.
+\item{} With the use of Golang and its support for concurrency, we emphasize on a way of software engineering by dividing our system into independent parts operating on its own while also contribute to the system as a whole.
+\end{itemize}
+
+\section{Future Work}
+There are alot of upgrade we would like to apply to this project. For instance, it is our initial intention that we apply the standard streaming protocol to this project, so that it would work everywhere, while we only need to provide a plugin client to extract and display watermark. Plus, the complexity of client application needs to be minimized, we should realize that by compress our project into a stable, compact black box or library. It would be easier to distribute and popularize our advertising method.
+
+In terms of compatibility, our project operate on the WAV audio files, whose size is much larger than the compressed file type MP3. It would be better that we support input as other audio file types. However, as the goal of our project is to provide a system of audio streaming, regardless of input type. Because, ultimately, our input is an array of audio data, which is the result of MP3 decompression. Therefore, the problem of file types does not matter much in the future.
+
+At the core of our project, we also need to upgrade the audio watermarking method too. It appears in the project that there are many settings of parameters, environments that we did not experiment with. For example, we limit ourselves with only 5 QIM step sizes. We believe that there are potential to upgrade our embedding method in terms of either embedding space or embedding correctness.
+
+However, in business terms, it is more important that we first validate this project objective in a larger scale. While this thesis has shown some effects in enhancing user engagement in advertising, it is still unsure that the Internet radio broadcasting community would adapt our method and replace their existing technology.
+
+In summary, we propose some issues that worth a reconsideration in the future as below:
+\begin{itemize}
+\item{In order to enhance the quality of audio watermarking, we can apply the new interesting field of machine leanring. By modeling the sound pattern of those which are easy to watermark and those which are error prone, we actually minimize the possibility of watermarking incorrectly.}
+\item{Another possible way of upgrading the audio watermarking algorithm is experiment with various settings that we did not try in our project.}
+\item{We should apply the industry standard mechanism of streaming.}
+\item{Minimize the complexity of client application to make it easier to distribute and install. Allow the community to adapt to our method.}
+\item{A mechanism for listener to interactively respond to advertisements. At the moment, it is just pure audio playback that are less likely to attract customer to the advertiser's intention. Not only providing a means for richer static content such as text, images, we aim to put in dynamic functionalities that take input from user. From that, analyze those inputs and take a further step in understanding customer and delivering more relevant advertisement.}
+\end{itemize}

@@ -1,0 +1,334 @@
+%% ----------------------------------------------------------------
+%% Thesis.tex -- MAIN FILE (the one that you compile with LaTeX)
+%% ---------------------------------------------------------------- 
+
+% Set up the document
+\documentclass[a4paper, 13pt, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
+\graphicspath{Figures/}  % Location of the graphics files (set up for graphics to be in PDF format)
+
+% Include any extra LaTeX packages required
+\usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
+\usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
+\usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
+
+%% ----------------------------------------------------------------
+\begin{document}
+\frontmatter      % Begin Roman style (i, ii, iii, iv...) page numbering
+
+% Set up the Title Page
+\title  {AN APPLICATION OF AUDIO DATA HIDING: RADIO BROADCAST AS
+A HIGH UTILITY SERVICE}
+\authors  {\texorpdfstring
+            {\href{nttin@apcs.vn}{TRONG-TIN NGUYEN - 1251045}}
+            {Author Name}
+            }
+\addresses  {\groupname\\\deptname\\\univname}  % Do not change this here, instead these must be set in the "Thesis.cls" file, please look through it instead
+\date       {HO CHI MINH CITY, 2016}
+\subject    {}
+\keywords   {}
+
+\maketitle
+%% ----------------------------------------------------------------
+
+\setstretch{1.5}  % It is better to have smaller font and larger line spacing than the other way round
+
+% Define the page headers using the FancyHdr package and set up for one-sided printing
+\fancyhead{}  % Clears all page headers and footers
+\rhead{\thepage}  % Sets the right side header to show the page number
+\lhead{}  % Clears the left side page header
+
+\pagestyle{fancy}  % Finally, use the "fancy" page style to implement the FancyHdr headers
+
+%% ----------------------------------------------------------------
+% Declaration Page required for the Thesis, your institution may give you a different text to place here
+%% ----------------------------------------------------------------
+% The "Funny Quote Page"
+%% ----------------------------------------------------------------
+%% ----------------------------------------------------------------
+
+\setstretch{1.5}  % Reset the line-spacing to 1.3 for body text (if it has changed)
+
+% The Acknowledgements page, for thanking everyone
+\acknowledgements{
+\addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
+
+To be completely honest, it is impossible for me to complete this thesis without the guidance, support, help and encouragement of many people. I would like to express my sincerity towards all those who sail with me on this boat.
+
+I would like to thank my thesis advisor, Dr. Minh-Nhut Ngo whose guidance and support had assisted me at all time regardless of time and difficulty. I truly appreciate the advices, discussion and encouragement that Dr. Minh-Nhut Ngo had given me during my thesis project. His great knowledge in this particular field is extremely valuable for me to open up ideas and solution. Last but not least, his dedication in our work is the source of motivation for me through the entire 9 months of the project.
+
+I would like to thank all of my classmates and colleagues whose support had given me encouragement to finish this project. Although they may not involve in the professional terms, it is the joy that they bring to me that I feel refreshed and can continue to focus in the project
+
+Most importantly, I would like to express gratitude for my family for their unconditional support and love. I could not complete this thesis without the people that are closest to me.	
+
+}
+\clearpage  % End of the Acknowledgements
+%% ----------------------------------------------------------------
+%% ----------------------------------------------------------------
+\lhead{\emph{Contents}}  % Set the left side page header to "Contents"
+\tableofcontents  % Write out the Table of Contents
+
+%% ----------------------------------------------------------------
+
+%% ----------------------------------------------------------------
+\lhead{\emph{List of Figures}}  % Set the left side page header to "List if Figures"
+\listoffigures  % Write out the List of Figures
+
+%% ----------------------------------------------------------------
+\lhead{\emph{List of Tables}}  % Set the left side page header to "List of Tables"
+\listoftables  % Write out the List of Tables
+
+\setstretch{1.5}  % Set the line spacing to 1.5, this makes the following tables easier to read
+\clearpage  % Start a new page
+\lhead{\emph{}}  % Set the left side page header to "Abbreviations"
+\listofsymbols{ll}  % Include a list of Abbreviations (a table of two columns)
+{
+% \textbf{Acronym} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or \\
+\textbf{BDR} & \textbf{B}it \textbf{D}etection \textbf{R}ate \\
+\textbf{DPC} & \textbf{D}ynamic \textbf{P}hase \textbf{C}oding \\
+\textbf{DSP} & \textbf{D}igital \textbf{S}ignal \textbf{P}rocessing \\
+\textbf{FFT} & \textbf{F}ast \textbf{F}ourier \textbf{T}ransform \\
+\textbf{IIR} & \textbf{I}finite \textbf{I}mpulse \textbf{R}esponse \\
+\textbf{IFFT} & \textbf{I}nverse \textbf{F}ast \textbf{F}ourier \textbf{T}ransform \\
+\textbf{LSB} & \textbf{L}east \textbf{S}ignificant \textbf{B}it\\
+\textbf{ODG} & \textbf{O}bjective \textbf{D}ifference \textbf{G}rade \\
+\textbf{PEAQ} & \textbf{P}erceptial \textbf{E}valuation of \textbf{A}udio \textbf{Q}uality \\
+\textbf{QIM} & \textbf{Q}uantization \textbf{I}ndex \textbf{M}odulation \\
+\textbf{SPC} & \textbf{S}tatic \textbf{P}hase \textbf{C}oding \\
+\textbf{SS} & \textbf{S}pread \textbf{S}pectrum\\
+}
+\clearpage  % End of the Acknowledgements
+
+% The Abstract Page
+\addtotoc{Abstract}  % Add the "Abstract" page entry to the Contents
+\abstract{
+
+
+\addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
+The dramatic growth of Internet has been flourishing many new areas in the multimedia industry. Internet radio broadcasting is one of the fast expanding business that has been attracting a consistent amount of audience and publishers. According to many annual media reports, the growth of Internet radio broadcasting is boosted constantly and is predicted to continue with this rate. As the industry booms in capacity, the space of potential customers also widen. Other businesses would try to capitalize on this client base. And this is done by advertising on Internet radio.
+
+Internet radio advertisements take the form as a normal audio advertisement played in between songs or broadcasting session. Inside the advertisement, information about the product is described as clear and concise as possible. However, it is known that lone audio information lacks the details that are not suitable to put inside the audio advertisement. Therefore, listeners often miss the surrounding information that help him know more about the product before decide whether he should invest more effort in the product. 
+
+Because the Internet radio broadcasting produce output as mere stream of audio, is becames very hard to attach an package of extra information to the audio data to send to clients. If we modify the streaming standard and allow more data to be sent along with the audio data, only the client application that expect that kind of data would be able to catch our sent data.
+
+Among many sciencific fields, audio data hiding has witnessed many greate improvements over the past few years. In this area, special codes are embedded into actual audio content without any affection to its normal use. Inspired by the interesting properties of audio data hiding, we aim to combine audio watermarking in our original problem to solve it.
+
+The puropose of this project is to propose an audio streaming system that are capable of combining audio data hiding and audio streaming. So that, we can decorate the advertisement with extra information, increase it efficency in user engagement. The result show that this project did change and improve the way advertisement is served to listeners.
+}
+
+\clearpage  % Abstract ended, start a new page
+
+%% ---------------------------------------------------------------
+
+%% ----------------------------------------------------------------
+\pagestyle{empty}  % No headers or footers for the following pages
+
+\null\vfill
+% Now comes the "Funny Quote", written in italics
+\textit{``If you want to go fast, go alone. If you want to go far, go together.''}
+
+\begin{flushright}
+African Proverb.
+\end{flushright}
+
+\vfill\vfill\vfill\vfill\vfill\vfill\null
+\clearpage  % Funny Quote page ended, start a new page
+
+%% ----------------------------------------------------------------
+\mainmatter	  % Begin normal, numeric (1,2,3...) page numbering
+\pagestyle{fancy}  % Return the page headers back to the "fancy" style
+
+% Include the chapters of the thesis, as separate files
+% Just uncomment the lines as you write the chapters
+
+\input{Chapters/Chapter1} % Introduction
+
+\input{Chapters/Chapter2} % Background Theory 
+
+\input{Chapters/Chapter3} % Experimental Setup
+
+\input{Chapters/Chapter4} % Experiment 1
+
+\input{Chapters/Chapter5} % Experiment 2
+
+%\input{Chapters/Chapter6} % Results and Discussion
+
+%\input{Chapters/Chapter7} % Conclusion
+
+\begin{thebibliography}{9}
+\bibitem{edison2016} 
+Infinite Dial report from Edison Research.
+\\\texttt{http://www.edisonresearch.com/the-infinite-dial-2016/-}
+[Online, accessed 20-July-2016]
+
+\bibitem{edisonslide} 
+Infinite Dial slides report from Edison Research.
+\\\texttt{http://www.slideshare.net/webby2001/infinite-dial-2016}
+[Online, accessed 20-July-2016]
+
+\bibitem{xapp2015q1} 
+Xapp Media Internet radio ad load report Q1 2015.
+\\\texttt{http://xappmedia.com/wp-content/uploads/2015/01/Internet\-{}Radio\-{}Trends-Report\-{}2015\_{}january.pdf}
+[Online, accessed 20-July-2016]
+
+\bibitem{xapp2015q4} 
+Xapp Media Internet radio ad load report Q4 2015.
+\\\texttt{https://xappmedia.com/download-internet-radio-ad-load-report-2015/}
+[Online, accessed 20-July-2016]
+
+\bibitem{spotify} 
+Spotify
+\\\texttt{https://www.spotify.com}
+[Online, accessed 20-July-2016]
+
+\bibitem{peaq} 
+PEAQ Standard
+\\\texttt{https://en.wikipedia.org/wiki/PEAQ}
+[Online, accessed 20-July-2016]
+
+\bibitem{has} 
+Human Audiotory System
+\\\texttt{https://en.wikipedia.org/wiki/Auditory\_{}system}
+[Online, accessed 20-July-2016]
+
+\bibitem{qim} 
+Quantization Index Modulation
+\\\texttt{http://allegro.mit.edu/pubs/posted/journal/2001\-{}chen\-{}wornell\-{}jvlsi.pdf}
+
+\bibitem{echohiding}
+D. Gruhl, A. Lu, and W. Bender, “Echo hiding,” in Proc. of Information Hiding,
+LNCS 1174, pp. 295–315, 1996.
+[\textit{On the electrodynamics of moving bodies}]. 
+Annalen der Physik, 322(10):891–921, 1905.
+ 
+\bibitem{moore} 
+B. C. J. Moore, \textit{An Introduction to the Psychology of Hearing 6th ed}. Brill Academic
+Pub, 2013.
+
+\bibitem{ozawa} 
+K. Ozawa, Y. Suzuki, and T. Sone, \textit{Monaural phase effect on timbre of two signals}, Journal of Acoustic Society American, vol. 93, no. 2, pp. 1007–1011, 1993.
+
+\bibitem{mp3} 
+MP3 audio encoder [Online, accesed on \(20^{th}\) July, 2016]
+\\\texttt{https://en.wikipedia.org/wiki/MP3}
+
+\bibitem{aiba} 
+E. Aiba, M. Tsuzaki, S. Tanaka, and M. Unoki, \textit{Judgment of perceptual synchrony
+between two pulses and verification of its relation to cochlear delay by an auditory
+model}, Japanese Psychological Research, vol. 50, no. 4, pp. 204–213, 2008.
+
+\bibitem{yasi} 
+J. A. Yasi, \textit{An algorithm for extracting the relative phase of harmonics from a peri-odic digital signal.}
+\\\texttt{http://physics.illinois.edu/undergrad/reu/2004/Yasi.
+pdf, 2004}
+
+\bibitem{yost} 
+W. A. Yost, A. N. Popper, and R. R. Fay, \textit{Auditory perception of sound sources}, Springer, 2008.
+
+\bibitem{dong} 
+X. Dong, M. F. Bocko, and Z. Ignjatovic, \textit{Data hiding via phase manipulation
+of audio signals}, in Proc. of International Conference on Acoustics, Speech, and
+Signal Processing, vol. 5, pp. 377–380, 2004.
+
+\bibitem{concurrency} 
+Concurrency
+\\\texttt{https://en.wikipedia.org/wiki/Concurrency\_{}(computer\_{}science)}
+
+\bibitem{csp} 
+Communicating sequential processes
+\\\texttt{https://en.wikipedia.org/wiki/Communicating\_{}sequential\_{}processes}
+
+\bibitem{golang} 
+Golang
+\\\texttt{https://golang.org}
+
+\bibitem{gstreamer} 
+Gstreamer
+\\\texttt{https://gstreamer.freedesktop.org/}
+
+\bibitem{angular} 
+AngularJS
+\\\texttt{https://angularjs.org/}
+
+\bibitem{websocket} 
+WebSocket
+\\\texttt{https://en.wikipedia.org/wiki/WebSocket}
+
+\bibitem{fft} 
+The Fourier Transform
+\\\texttt{http://www.thefouriertransform.com/}
+
+\bibitem{tritonreport} 
+Triton March 2016 Webcast Metrics Top 20 Ranker
+\\\texttt{https://xappmedia.com/triton-data-shows-continued-rise-internet-radio-listening/}
+
+\bibitem{edisonresearch} 
+The Infinite Dial report from Edison Research and Triton Digital
+\\\texttt{https://xappmedia.com/edison-research-internet-radio-weekly-listeners-half-us-population/}
+
+\bibitem{nmnhut} 
+N. M. Ngo, M. Unoki, R. Miyauchi, and Y. Suzuki, \textit{Data hiding scheme for ampli-
+tude modulation radio broadcasting systems,}, Journal of Information Hiding and
+Multimedia Signal Processing, Ubiquitous International, vol. 5, no. 3, pp. 324–341,
+2014.
+
+\bibitem{nmnhutpaper} 
+Nhut Minh Ngo, Brian Michael Kurkoski, and Masashi Unoki, \textit{ROBUST AND RELIABLE AUDIO WATERMARKING BASED ON
+DYNAMIC PHASE CODING AND ERROR CONTROL CODING}, 23rd European Signal Processing Conference (EUSIPCO) 
+\\\texttt{http://www.eurasip.org/Proceedings/Eusipco/Eusipco2015/papers/1570104339.pdf}
+
+\bibitem{dwalliance} 
+DIGITAL WATERMARKING PLAYS EXCITING ROLE IN ENHANCING ENTERTAINMENT EXPERIENCES FOR CONSUMERS THROUGH TELEVISION, MAGAZINES AND MOBILE DEVICES
+\\\texttt{http://www.digitalwatermarkingalliance.org/pr\_{}10JUL2012.asp}
+
+\end{thebibliography}
+
+%% ----------------------------------------------------------------
+% Now begin the Appendices, including them as separate files
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
+
+\input{Appendices/AppendixA}	% Appendix Title
+
+%\input{Appendices/AppendixB} % Appendix Title
+
+%\input{Appendices/AppendixC} % Appendix Title
+
+\addtocontents{toc}{\vspace{2em}}  % Add a gap in the Contents, for aesthetics
+\backmatter
+
+%% ----------------------------------------------------------------
+
+
+\end{document}  % The End
+%% ----------------------------------------------------------------
